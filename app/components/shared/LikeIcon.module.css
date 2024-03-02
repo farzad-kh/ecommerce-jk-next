@@ -1,0 +1,128 @@
+/* .like {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    position: relative;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  } */
+.like {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  justify-content: center;
+}
+
+.like svg {
+  margin: 11px 9px 7px 9px;
+  transform: translate3d(0, 0, 0);
+}
+
+.like svg .heart {
+  opacity: 1;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.like svg .thread {
+  stroke-dashoffset: 87;
+  stroke-dasharray: 87;
+  transform: scale(0.5);
+  transform-origin: center;
+}
+
+.like.liked svg {
+  animation: bounce 0.8s ease;
+}
+
+.like.liked svg .heart {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.like.liked svg .thread {
+  animation: threadheart 0.6s ease-in forwards;
+}
+
+.i {
+  filter: invert();
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(1);
+  }
+
+  80% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes threadheart {
+  0% {
+    fill: rgba(255, 48, 64, 0);
+    transform: scale(0.5);
+    stroke-dashoffset: 87;
+  }
+
+  95% {
+    fill: rgba(255, 48, 64, 0);
+    transform: scale(1);
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    fill: #FF3040;
+    transform: scale(1);
+    stroke-dashoffset: 0;
+  }
+}
+
+@media screen and (max-width:765px) {
+  .like {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    position: relative;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    justify-content: center;
+  }
+
+  .like svg {
+    margin: 9px 9px 7px 9px;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media screen and (max-width:440px) {
+  .like {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    position: relative;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    justify-content: center;
+  }
+
+  .like svg {
+    margin: 8px 9px 7px 9px;
+    transform: translate3d(0, 0, 0);
+  }
+
+}
