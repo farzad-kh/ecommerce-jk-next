@@ -93,7 +93,7 @@ const Header = () => {
           </NavbarItem>
         ))}
       </NavbarContent>
-      <NavbarContent className="gap-2" as="div" justify="end">
+      <NavbarContent className="gap-[0.7rem]" as="div" justify="end">
         <div className="relative block max-md:hidden " ref={ref}>
           <div
             onClick={() => setActiveSearch(!activeSearch)}
@@ -108,7 +108,7 @@ const Header = () => {
           </AnimatePresence>
         </div>
 
-        <div className="mr-3 mt-2">
+        <div className="mt-2">
           <button className="relative" onClick={isToggleHandler}>
             <AiOutlineShopping
               className={"w-[26px] h-7 z-10 text-slate-700 "}
