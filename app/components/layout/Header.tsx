@@ -136,7 +136,7 @@ const Header = () => {
         {(status as string) === "loading" ? (
           <Spinner size="md" />
         ) : (status as string) === "authenticated" ? (
-          <NavbarItem className="w-9 ">
+          <NavbarItem className="w-[32px] ml-2  ">
             <DropdownItemUser profileUser={session?.user} />
           </NavbarItem>
         ) : (

@@ -2,13 +2,13 @@
 import React, { useState } from "react";
  
 import { useCartStore, useCheckOut, useDrawCart } from "@/app/store";
-import { Button } from "@nextui-org/react";
+import { Button, Spinner } from "@nextui-org/react";
  
 import toast from "react-hot-toast";
 
 import { MdError } from "react-icons/md";
 import { TfiRulerAlt } from "react-icons/tfi";
-import LoadingRow from "./loading/LoadingRow";
+// import LoadingRow from "./loading/LoadingRow";
 interface Props {
   id: string;
   name: string;
@@ -62,7 +62,7 @@ const AddToCartBtn = ({
         isCheckOutLoad && "!opacity-70"
       }  sm:w-[280px] w-full mr-2  bg-gradient-to-tr h-[44px] text-base  from-green-500 to-blue-500 text-white shadow-lg  rounded-sm font-semibold `}
     >
-      {isLoading ? <LoadingRow /> : "Add to cart"}
+      {isLoading ? <Spinner color="white" size="md" /> : "Add to cart"}
     </Button>
   );
 };

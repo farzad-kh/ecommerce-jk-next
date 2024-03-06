@@ -53,7 +53,7 @@ const SearchContainer = ({ setActiveSearch, setIsMenuOpen }: Props) => {
       className={` ${
         setIsMenuOpen !== undefined
           ? "relative w-full my-2"
-          : "absolute -top-[9px] left-[-72px]"
+          : "absolute -top-[9px] left-[-70px]"
       }  z-50 transition-width `}
       onSubmit={searchSubmit}
       id="sa"
@@ -65,7 +65,7 @@ const SearchContainer = ({ setActiveSearch, setIsMenuOpen }: Props) => {
           setIsMenuOpen !== undefined
             ? "w-full border-neutral-700 bg-[#f2f2f2]"
             : "backdrop-blur-sm  w-[186px] bg-[#e4e9eda2] border-neutral-400 "
-        }  border-1 rounded-sm pl-2 pr-3 py-[6px] outline-none focus:outline-[#4971d7]  relative placeholder:text-sm placeholder:font-semibold placeholder:text-slate-500 `}
+        }  border-1 rounded-sm pl-2 pr-3 py-2 outline-none focus:outline-[#4971d7]  relative placeholder:text-sm placeholder:font-semibold placeholder:text-slate-500 `}
         onChange={(e) => setSearch(e.target.value.trim())}
         type="email"
         placeholder="Serach Products..."

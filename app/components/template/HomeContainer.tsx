@@ -14,7 +14,7 @@ const HomeContainer = async () => {
       </div>
 
       <div className="overflow-hidden block  md:mt-9 mt-0 mb-12">
-        <p className="my-2 sm:text-xl text-base font-bold uppercase">
+        <p className="mt-2 mb-3 sm:text-xl text-base font-bold uppercase">
           new products
         </p>
         <SliderBreakPoint productsData={productsData} />

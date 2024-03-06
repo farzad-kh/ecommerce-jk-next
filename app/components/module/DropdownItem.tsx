@@ -47,9 +47,9 @@ const DropdownItemUser = ({ profileUser }: Props) => {
     }
   };
   return (
-    <div className="flex items-center gap-4">
-      <Dropdown placement="bottom-end">
-        <DropdownTrigger>
+    <div className="flex items-center">
+      <Dropdown  placement="bottom-end">
+        <DropdownTrigger className="h-[32px]">
           <Avatar
             size="sm"
             isBordered

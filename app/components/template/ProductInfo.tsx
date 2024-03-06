@@ -5,7 +5,6 @@ import { formatPrice } from "@/util/PriceUsFormat";
 import SizeSelect from "../module/SizeSelect";
 import ProductPolisy from "../module/ProductPolisy";
 
-
 interface Props {
   product: Product;
 }
@@ -13,7 +12,7 @@ interface Props {
 const ProductInfo = ({ product }: Props) => {
   return (
     <div className="flex justify-center w-full ">
-      <div className="flex justify-between gap-y-10  md:p-10 p-4 text-gray-700 md:flex-row flex-col max-w-[1400px]">
+      <div className="flex justify-between gap-y-10  lg:p-10 md:p-7 sm:p-4 text-gray-700 md:flex-row flex-col max-w-[1400px]">
         <SliderContainer metadata={product?.metadata!} />
 
         <div className="md:flex-[0.54] flex-[0.2] flex flex-col sm:p-4 ml-2">

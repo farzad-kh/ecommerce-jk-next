@@ -32,7 +32,7 @@ const ThumbsGallery = ({ setThumbsSwiper, images }: Props) => {
         mousewheel={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper"
+        className="mySwiper !pb-1"
         breakpoints={{
           1500: {
             slidesPerView: 5,

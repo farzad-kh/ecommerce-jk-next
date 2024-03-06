@@ -16,13 +16,9 @@ interface Props {
   productsData: Product[];
   favorite?: boolean;
 }
-// export interface Metadata {
-//   color?: string;
-//   size?: string;
-//   composition?: string;
-// }
+ 
 const ProductCardContainer = ({ productsData, favorite }: Props) => {
-  // prod_P8KtSDfHOBB0Hs=4200
+   
 
   return (
     <div className="flex items-center justify-center">

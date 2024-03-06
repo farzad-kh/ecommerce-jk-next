@@ -3,19 +3,17 @@ import React, { useState } from "react";
 import SliderThumbs from "../module/SliderThumbs";
 import ThumbsGallery from "../shared/ThumbsGallery";
 
-interface Props{
-  metadata:{}
+interface Props {
+  metadata: {};
 }
 
-const SliderContainer = ({ metadata }:Props) => {
+const SliderContainer = ({ metadata }: Props) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  const filterImage = Object.values(metadata as { [key: string]: string }).filter(
-    (item) => item?.includes("image")
-  );
-// console.log(Object.keys(product.metadata));
+  const filterImage = Object.values(
+    metadata as { [key: string]: string }
+  ).filter((item) => item?.includes("image"));
 
- 
   return (
     <div className=" md:sticky  relative md:overflow-y-hidden overflow-auto top-[55px]   md:flex-[0.45] flex-[0.8]  flex-wrap justify-center md:self-baseline self-center grid   gap-x-4  max-md:p-7 max-sm:p-4  gap-y-3   ">
       <div className=" rounded-md block overflow-hidden max-h-[700px] w-full">
