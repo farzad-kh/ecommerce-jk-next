@@ -4,6 +4,7 @@ import getProducts from "../hooks/DataList";
 import Link from "next/link";
 import { sort } from "fast-sort";
 import SelectCat from "../components/module/SelectCat";
+import { Metadata } from "next";
 
 interface Props {
   searchParams: {
@@ -39,3 +40,9 @@ const productMetadata=productsData.filter(item=>item.metadata.category==="jeans"
 };
 
 export default page;
+
+export const metadata: Metadata = {
+  title:'Jeans For Men | JACK & JONES',
+  description:'High Quality Jeans'
+}
+ 

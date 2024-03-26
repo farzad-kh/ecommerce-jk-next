@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-// the store itself does not need any change
+ 
 
 export interface CartItem {
   id: string;
@@ -17,7 +17,7 @@ interface CartState {
   totalPrice: number;
   paymentIntent: string;
   isLoading: boolean;
-  clientSecret: string;
+
 }
 interface CartStateActions {
   addToProduct: (item: CartItem) => void;
@@ -26,7 +26,7 @@ removeProduct:(item: CartItem) => void;
   setPaymentIntent: (value: string) => void;
   resetCartStore: () => void;
   cartStoreLoading: () => void;
-  setClientSecret: (value: string) => void;
+
 }
 
 interface DrawCart {
@@ -45,6 +45,13 @@ interface CheckOut {
   isCheckOutLoad: boolean;
   checkOutClick: () => void;
   checkOutLoadHandler: () => void;
+}
+
+ 
+interface ClientSecret {
+  clientSecret?:string
+  setClientSecret: (value: string) => void;
+
 }
 
  
@@ -70,6 +77,11 @@ export const useCheckOut = create<CheckOut>((set) => ({
   checkOutLoadHandler: () =>
     set((state) => ({ isCheckOutLoad: !state.isCheckOutLoad })),
 }));
+ 
+export const useClientSecret = create<ClientSecret>((set) => ({
+  ClientSecret: "",
+  setClientSecret: (value) => set(() => ({ clientSecret: value })),
+}));
 
  
 const resetCartStore = (set: resetCartStore) => {
@@ -81,6 +93,11 @@ const resetCartStore = (set: resetCartStore) => {
   });
 };
 
+
+
+
+
+
 export const useCartStore = create<CartState & CartStateActions>()(
   persist(
     (set, get) => ({
@@ -88,7 +105,7 @@ export const useCartStore = create<CartState & CartStateActions>()(
       totalPrice: 0,
       paymentIntent: "",
       isLoading: false,
-      clientSecret: "",
+ 
       resetCartStore: () => resetCartStore(set),
       setPaymentIntent: (value) => set((state) => ({ paymentIntent: value })),
       cartStoreLoading: () => set((state) => ({ isLoading: !state.isLoading })),
@@ -189,7 +206,7 @@ export const useCartStore = create<CartState & CartStateActions>()(
             totalPrice: totalAmount,
           };
         }),
-        setClientSecret: (value) => set(() => ({ clientSecret: value })),
+     
         
     }),
     {

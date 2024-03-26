@@ -4,6 +4,7 @@ import getProducts from "../hooks/DataList";
 import Link from "next/link";
 import { sort } from "fast-sort";
 import SelectCat from "../components/module/SelectCat";
+import { Metadata } from "next";
 
 interface Props {
   searchParams: {
@@ -33,10 +34,16 @@ const page = async ({ searchParams }: Props) => {
 
   return (
     <div>
-      <SelectCat selectCat={cat} pageUrl={"newProducts"} sorting />
+      <SelectCat selectCat={cat} pageUrl={"new"} sorting />
       <ProductCardContainer productsData={data()} />
     </div>
   );
 };
 
 export default page;
+
+export const metadata: Metadata = {
+  title:'New products | JACK & JONES',
+  description:'High Quality Jeans'
+}
+ 

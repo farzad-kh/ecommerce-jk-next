@@ -1,5 +1,5 @@
 "use client";
-import { useCartStore, useCheckOut } from "@/app/store";
+import { useCartStore, useCheckOut, useClientSecret } from "@/app/store";
 import { redirect } from "next/navigation";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
@@ -15,7 +15,7 @@ export default function CheckOutContainer() {
   
   if (isCheckOut===false) return redirect("/");
 
-  const clientSecret = useCartStore((state) => state.clientSecret);
+  const clientSecret = useClientSecret((state) => state.clientSecret);
 
 
   const appearance = {

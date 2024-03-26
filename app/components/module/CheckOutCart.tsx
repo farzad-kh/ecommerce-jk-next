@@ -1,5 +1,5 @@
 "use client";
-import { useCartStore, useCheckOut, useDrawCart } from "@/app/store";
+import { useCartStore, useCheckOut, useClientSecret, useDrawCart } from "@/app/store";
 import { usePathname } from "next/navigation";
 import { formatPrice } from "@/util/PriceUsFormat";
 import { Button, Skeleton, Spinner } from "@nextui-org/react";
@@ -18,7 +18,7 @@ const CheckOutCart = () => {
   const isCheckOutLoad = useCheckOut((state) => state.isCheckOutLoad);
   const checkOutLoadHandler = useCheckOut((state) => state.checkOutLoadHandler);
   const setPaymentIntent = useCartStore((state) => state.setPaymentIntent);
-  const setClientSecret = useCartStore((state) => state.setClientSecret);
+  const setClientSecret = useClientSecret((state) => state.setClientSecret);
   const [textNotif, setTextNotif] = useState(false);
   const isLoading = useCartStore((state) => state.isLoading);
 

@@ -4,7 +4,7 @@ import getProducts from "../hooks/DataList";
 import Link from "next/link";
 import { sort } from "fast-sort";
 import SelectCat from "../components/module/SelectCat";
-
+import { Metadata } from 'next'
 interface Props {
   searchParams: {
     category?: string | undefined;
@@ -42,3 +42,9 @@ const page = async ({ searchParams }: Props) => {
 };
 
 export default page;
+
+export const metadata: Metadata = {
+  title:'Tshirts For Men | JACK & JONES',
+  description:'High Quality Tshirt'
+}
+ 

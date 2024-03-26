@@ -4,13 +4,16 @@ import LogoMain from "../../../public/newin-us.jpg";
 import SectionImgMain from "../module/SectionImgMain";
 import getProducts from "@/app/hooks/DataList";
 import SliderBreakPoint from "../layout/SliderBreakPoint";
+import Link from "next/link";
 
 const HomeContainer = async () => {
   const productsData = await getProducts();
   return (
     <section className="sm:p-5 p-4 mt-4">
       <div className="block mb-8 aspect-[16/5.44] bg-loader">
+        <Link href={"/new"}>
         <Image alt={LogoMain.src} radius="none" className="rounded bg-loader" src={LogoMain.src} />
+        </Link>
       </div>
 
       <div className="overflow-hidden block  md:mt-9 mt-0 mb-12">

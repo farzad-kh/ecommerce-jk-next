@@ -5,12 +5,11 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import OrdersContainer from "../components/template/OrdersContainer";
 import Link from "next/link";
+import { Metadata } from "next";
  
 const page = async () => {
   const session = await getServerSession(authOptions);
  if (!session) redirect("/api/auth/signin") 
-  
-
   const updateUser = await prisma.order.findMany({
     where: {
       userId: session?.user?.id,
@@ -50,3 +49,9 @@ const page = async () => {
 };
 
 export default page;
+
+export const metadata: Metadata = {
+  title:'JACK & JONES Orders',
+  description:'High Quality Jeans'
+}
+ 

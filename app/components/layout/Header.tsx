@@ -37,7 +37,7 @@ const Header = () => {
     { id: 2, href: "/jeans", title: "Jeans" },
     { id: 3, href: "/tshirt", title: "T-shirts" },
     { id: 4, href: "/trousers", title: "Trousers" },
-    { id: 5, href: "/newProducts", title: "New" },
+    { id: 5, href: "/new", title: "New" },
   ];
   const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
   const [activeSearch, setActiveSearch] = useState(false);

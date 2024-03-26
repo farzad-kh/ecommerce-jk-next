@@ -5,7 +5,7 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-import { useCartStore } from "@/app/store";
+import { useCartStore, useClientSecret } from "@/app/store";
 import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 import LoadingRow from "./loading/LoadingRow";
@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 const CheckOutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-  const clientSecret = useCartStore((state) => state.clientSecret);
+  const clientSecret = useClientSecret((state) => state.clientSecret);
  
   const [message, setMessage] = useState<null | string>(null);
   const [isLoading, setIsLoading] = useState(false);

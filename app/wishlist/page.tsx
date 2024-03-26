@@ -4,6 +4,7 @@ import prisma from "../../prisma/client";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
 
 const favoritePage = async () => {
   const session = await getServerSession(authOptions);
@@ -43,9 +44,8 @@ const favoritePage = async () => {
 
 export default favoritePage;
 
-//   const res = await fetch("http://localhost:3000/api/favorite");
-//   const newData: FavoriteItem[] = await res.json();
-//   console.log(newData);
-
-// const modifiedDataList =   favoriteList.map(item => ({ ...item, id: item.productId }));
-//  console.log(modifiedDataList);
+export const metadata: Metadata= {
+  title:'JACK & JONES Wishlist',
+  description:'High Quality Jeans'
+}
+ 

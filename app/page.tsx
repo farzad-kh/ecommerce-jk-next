@@ -1,6 +1,6 @@
  
 import HomeContainer from "./components/template/HomeContainer";
- 
+import { Metadata } from 'next'
 import { getServerSession } from "next-auth";
 import { authOptions } from "../app/api/auth/[...nextauth]/route"
 export default async function Home ({}) {
@@ -14,3 +14,9 @@ export default async function Home ({}) {
     </div>
   );
 }
+
+
+export const metadata: Metadata = {
+  title:`JACK & JONES - Men's Clothing` ,
+}
+ 

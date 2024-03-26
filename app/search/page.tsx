@@ -4,7 +4,7 @@ import getProducts from "../hooks/DataList";
 import { sort } from "fast-sort";
 import SelectCat from "../components/module/SelectCat";
 import { redirect } from "next/navigation";
- 
+
 import SearchLoad from "../components/module/SearchLoad";
 import { Suspense } from "react";
 import WifiLoader from "../components/module/loading/WifiLoader";
@@ -67,10 +67,16 @@ const page = async ({ searchParams }: Props) => {
           </Suspense>
         </SearchLoad>
       ) : (
-   <NoResultSearch searchResults={searchParams?.q}/>
+        <NoResultSearch searchResults={searchParams?.q} />
       )}
     </>
   );
 };
 
 export default page;
+
+export async function generateMetadata({ searchParams }: Props) {
+  return {
+    title: `Searching for ${searchParams.q} | JACK & JONES`,
+  };
+}
