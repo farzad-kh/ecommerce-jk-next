@@ -15,7 +15,7 @@ const ProductInfo = ({ product }: Props) => {
       <div className="flex justify-between gap-y-10  lg:p-10 md:p-7 sm:p-4 text-gray-700 md:flex-row flex-col max-w-[1400px]">
         <SliderContainer metadata={product?.metadata!} />
 
-        <div className="md:flex-[0.54] flex-[0.2] flex flex-col sm:p-4 ml-2">
+        <div className="md:flex-[0.54] flex-[0.2] flex flex-col sm:p-4 p-4">
           <h1 className="text-xl font-semibold ">{product?.name}</h1>
           <p className="mb-8 text-sm ">{product?.description}</p>
           <div className="mb-2 font-bold text-slate-800   text-[1.1rem]  ">
