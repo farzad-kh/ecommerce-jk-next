@@ -29,13 +29,13 @@ const VideoPlayer = () => {
         src="https://lscoecomm.scene7.com/is/content/lscoecomm/24_H2_SPM_MAY_LAUNCH_D_HP_A_MOTION-0x1080-4991k"
         lsco-lazyload="loaded"
       ></video>
-      <div className="text-3xl absolute top-[50%] flex items-center justify-center w-full  ">
+      {/* <div className="text-3xl absolute top-[50%] flex items-center justify-center w-full  ">
         <div className="bg-[rgba(0,0,0,.3)] w-fit p-3 backdrop-blur-sm text-slate-200 text-center gap-2 flex-col flex">
         <p className="">new summer collection</p>
         <p className="">SOON</p>
         </div>
         
-      </div>
+      </div> */}
 
       <button
         className="absolute right-4 bottom-4 bg-[rgba(0,0,0,0.2)] p-2 rounded-full backdrop-blur-md"
