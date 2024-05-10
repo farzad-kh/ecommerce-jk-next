@@ -58,7 +58,6 @@ const page = async ({ searchParams }: Props) => {
         <SearchLoad>
           <SelectCat
             selectCat={cat}
-            pageUrl={"search"}
             sorting
             search={searchParams.q}
           />

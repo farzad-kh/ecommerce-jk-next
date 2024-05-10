@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import LogoSw from "../../../public/jeans-us-dayz22-focus-row5-box2-en-us.jpg";
 import LogoNw from "../../../public/outer-us-dayz22-focus-row5-box1-en-us.jpg";
 import LogoSh from "../../../public/shirts-us-dayz22-focus-row6-box2-en-us.jpg";
@@ -7,6 +7,7 @@ import LogoPa from "../../../public/pants-us-dayz22-focus-row6-box1-en-us.jpg";
 import { motion } from "framer-motion";
 import { sideBanerMotion } from "@/util/PriceUsFormat";
 import { useRouter } from "next/navigation";
+import VideoPlayer from "./VideoPlayer";
 
 const banerImg = [
   { id: 1, image: LogoSw.src, url: "/jeans" },
@@ -19,9 +20,13 @@ const SectionImgMain = () => {
   const [a, setA] = useState(true);
   setTimeout(() => setA(false), 500);
   const route = useRouter();
+
+
   return (
     <div className={`${a ? "hidden" : "block"}`}>
-      <div className="grid grid-cols-2 grid-rows-2 sm:gap-4 gap-2">
+ 
+<VideoPlayer/>
+      <div className="grid sm:grid-cols-2 grid-cols-1 grid-rows-2 sm:gap-4 gap-2">
         {banerImg.map((item, i) => (
           <motion.div
             key={i}
@@ -45,4 +50,3 @@ const SectionImgMain = () => {
 };
 
 export default SectionImgMain;
- 

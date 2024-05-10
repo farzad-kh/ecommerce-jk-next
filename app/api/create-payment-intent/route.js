@@ -2,7 +2,7 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import Stripe from "stripe";
- 
+
 import prisma from "../../../prisma/client"
 import { authOptions } from "../auth/[...nextauth]/route";
 // import { authOptions } from "../auth/[...nextauth]/route";
@@ -18,8 +18,9 @@ export async function POST(req) {
     try {
         const body = await req.json()
         const { products, payment_intent_id, total_price } = body
+
         if (!session) return NextResponse.json({ error: "You must log in" }, { status: 403 })
-          
+
         const orderData = {
             user: { connect: { id: session?.user?.id } },
             totalPrice: total_price,
@@ -52,7 +53,7 @@ export async function POST(req) {
                 })
 
                 if (!existingOrder) return NextResponse.json({ error: 400 }, { message: "invalid payment intent" })
-              
+
                 await prisma.order.update({
                     where: { id: existingOrder?.id },
                     data: {
@@ -87,7 +88,8 @@ export async function POST(req) {
                 },
             })
             orderData.paymentIntentId = paymentIntent.id
-        await prisma.order.create({
+            // payment_intent_id is empty if user not adding product and click on checkout
+            await prisma.order.create({
                 data: orderData
             })
             return NextResponse.json(

@@ -12,7 +12,7 @@ const layout = ({children}:LayoutProps) => {
       ];
     return (
         <>
-       <SelectCat selectCat={cat} pageUrl={"sweatshirts"} />
+       <SelectCat selectCat={cat}  />
             {children}
         </>
     );

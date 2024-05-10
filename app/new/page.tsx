@@ -34,7 +34,7 @@ const page = async ({ searchParams }: Props) => {
 
   return (
     <div>
-      <SelectCat selectCat={cat} pageUrl={"new"} sorting />
+      <SelectCat selectCat={cat}  sorting />
       <ProductCardContainer productsData={data()} />
     </div>
   );
