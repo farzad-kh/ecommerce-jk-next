@@ -6,8 +6,7 @@ import SelectCat from "../components/module/SelectCat";
 import { redirect } from "next/navigation";
 
 import SearchLoad from "../components/module/SearchLoad";
-import { Suspense } from "react";
-import WifiLoader from "../components/module/loading/WifiLoader";
+
 import NoResultSearch from "../components/layout/NoResultSearch";
 
 interface Props {
@@ -56,14 +55,9 @@ const page = async ({ searchParams }: Props) => {
     <>
       {data()?.length! > 0 ? (
         <SearchLoad>
-          <SelectCat
-            selectCat={cat}
-            sorting
-            search={searchParams.q}
-          />
-          <Suspense fallback={<WifiLoader />}>
-            <ProductCardContainer productsData={data()!} />
-          </Suspense>
+          <SelectCat selectCat={cat} sorting search={searchParams.q} />
+
+          <ProductCardContainer productsData={data()!} />
         </SearchLoad>
       ) : (
         <NoResultSearch searchResults={searchParams?.q} />

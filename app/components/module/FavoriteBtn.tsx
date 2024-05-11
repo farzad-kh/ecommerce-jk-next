@@ -30,17 +30,17 @@ const FavoriteBtn = ({
 
   const [favoriteList, setFavoriteList] = useState<Props[]>([]);
   const [isLoad, setIsLoad] = useState(true);
- 
+
   const pathname = usePathname();
 
   const fetchData = async () => {
     try {
-      const res = await fetch("/api/favorite",{ cache: 'force-cache' });
+      const res = await fetch("/api/favorite", { cache: "force-cache" });
       const newData = await res.json();
       setFavoriteList(newData);
 
       if (res.status === 200) {
-        setTimeout(() => setIsLoad(false), 500);
+          setIsLoad(false) 
       }
     } catch (error) {
       console.error("Error in fetchData:", error);
@@ -74,9 +74,7 @@ const FavoriteBtn = ({
       });
       const data = await res.json();
       if (res.status === 200) {
- 
         fetchData();
-    
       }
     } catch (error) {
       console.error("Error in favoriteHandler:", error);
@@ -98,12 +96,11 @@ const FavoriteBtn = ({
       });
       const data = await res.json();
       if (res.status === 201) {
-     
         fetchData();
         // if (pathname==="/wishlist") {
         //   router.refresh()
         // }
-        router.refresh()
+        router.refresh();
       }
     } catch (error) {
       console.error("Error in dislikeHandler:", error);
@@ -116,8 +113,7 @@ const FavoriteBtn = ({
     if (session) {
       fetchData();
     } else {
-      setIsLoad(true);
-      setTimeout(() => setIsLoad(false), 3100);
+      setIsLoad(false);
     }
   }, [session]);
 
@@ -125,8 +121,6 @@ const FavoriteBtn = ({
 
   isLiked =
     favoriteList && favoriteList?.find((item) => item?.productId === productId);
-
- 
 
   return (
     <>
