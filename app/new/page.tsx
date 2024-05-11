@@ -26,15 +26,10 @@ const page = async ({ searchParams }: Props) => {
       return productsData;
     }
   };
-  const cat = [
-    { id: 1, value: "", label: "Newest" },
-    { id: 2, value: "asc", label: "Price low to high" },
-    { id: 3, value: "desc", label: "Price high to low" },
-  ];
 
   return (
     <div>
-      <SelectCat selectCat={cat}  sorting />
+
       <ProductCardContainer productsData={data()} />
     </div>
   );
@@ -43,7 +38,6 @@ const page = async ({ searchParams }: Props) => {
 export default page;
 
 export const metadata: Metadata = {
-  title:'New products | JACK & JONES',
-  description:'High Quality Jeans'
-}
- 
+  title: "New products | JACK & JONES",
+  description: "High Quality Jeans",
+};

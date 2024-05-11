@@ -20,9 +20,6 @@ interface Props {
 }
 
 const OrdersContainer = ({ orders }: Props) => {
- 
- 
- 
   return (
     <div className="md:p-10 p-4 w-full flex justify-center overflow-hidden">
       <div className="flex justify-center items-center flex-col sm:w-[1280px] w-full flex-wrap overflow-hidden">
@@ -35,7 +32,8 @@ const OrdersContainer = ({ orders }: Props) => {
             }}
             viewport={{ once: true }}
             className={`flex w-full gap-1 mb-6 flex-col  ${
-              orders.length > 1 && "before:relative before:border-b-1 before:top-[-10px]"
+              orders.length > 1 &&
+              "before:relative before:border-b-1 before:top-[-10px]"
             }`}
             key={item.id}
           >
@@ -64,8 +62,9 @@ const OrdersContainer = ({ orders }: Props) => {
 
             <div className="flex gap-2  flex-col ">
               {item?.products?.map((products) => (
-                <OrderItem product={products} />
+                <OrderItem product={products} key={products.id} />
               ))}
+
               <h3 className="text-slate-700 my-3 text-sm">
                 Total:{" "}
                 <span className="text-sm text-slate-800 font-bold ">

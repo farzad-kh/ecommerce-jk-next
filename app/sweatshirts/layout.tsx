@@ -1,6 +1,6 @@
 import React from 'react';
 import SelectCat from '../components/module/SelectCat';
-export interface LayoutProps  { 
+interface LayoutProps  { 
     children: React.ReactNode
  }
  
@@ -12,7 +12,7 @@ const layout = ({children}:LayoutProps) => {
       ];
     return (
         <>
-       <SelectCat selectCat={cat}  />
+       <SelectCat selectCat={cat}   />
             {children}
         </>
     );

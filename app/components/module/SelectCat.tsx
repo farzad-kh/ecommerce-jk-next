@@ -39,15 +39,14 @@
 //     }
 //   };
 //   let defaultValueSearch = a.length < 3 ? "" : a[2];
- 
- 
+
 //   return (
 //     <div className="sm:mx-10 mx-4 mt-10">
 //       <motion.select
 //         initial={{ opacity: 0 }}
 //         whileInView={{ opacity: 1 }}
 //         onChange={selectHandler}
-      
+
 //         value={search ? defaultValueSearch : a[1]}
 //         className="max-w-xs select-t"
 //       >
@@ -63,14 +62,11 @@
 
 // export default SelectCat;
 
-
-
-
-
 "use client";
-import { useRouter, useSearchParams,usePathname } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { motion } from "framer-motion";
- 
+import { useState } from "react";
+
 interface items {
   id?: number | undefined;
   value: string | undefined;
@@ -81,18 +77,21 @@ interface Props {
   sorting?: boolean;
   search?: string;
 }
-const SelectCat = ({ selectCat,  sorting, search }: Props) => {
+const SelectCat = ({ selectCat, sorting, search }: Props) => {
   const router = useRouter();
   const params = useSearchParams();
   const urlParams = new URLSearchParams(params);
-  // const category = urlParams.get("category");
+  const category = urlParams.get("category");
   // const sortingParams = urlParams.get("sorting");
   const paramsQ = urlParams.toString().split("=");
-  const pathname = usePathname()
-  console.log(pathname);
-  
+  const pathname = usePathname();
+
+  const [selectVal, setSelectVal] = useState("");
   const selectHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = e.target;
+    setSelectVal(value);
+    console.log(e.target);
+
     if (value !== "") {
       if (sorting) {
         router.push(`${pathname}?sorting=${value}`);
@@ -108,22 +107,29 @@ const SelectCat = ({ selectCat,  sorting, search }: Props) => {
       router.push(`${pathname}`);
     }
   };
-  let defaultValueSearch = paramsQ.length < 3 ? "" : paramsQ[2];
- 
- 
+  let defaultValueSearch = paramsQ.length < 3 ? "" : paramsQ[2].split("+").join(" ");
+
+  const selectParams = paramsQ[1]?.split("+").join(" ");
+  console.log(selectParams);
+
   return (
     <div className="sm:mx-10 mx-4 mt-10">
       <motion.select
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         onChange={selectHandler}
-      
-        value={search ? defaultValueSearch : paramsQ[1]}
+        value={
+          search
+            ? defaultValueSearch
+            : selectParams === undefined
+            ? ""
+            : selectParams
+        }
         className="max-w-xs select-t"
       >
         {selectCat.map((item) => (
-          <option key={item.value} value={item.value}>
-            {item.label}
+          <option key={item.id} value={item?.value}>
+            {item?.label}
           </option>
         ))}
       </motion.select>

@@ -16,7 +16,7 @@ const CheckOutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const clientSecret = useClientSecret((state) => state.clientSecret);
- 
+
   const [message, setMessage] = useState<null | string>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -76,7 +76,7 @@ const CheckOutForm = () => {
       return;
     }
     if (error === undefined || error?.payment_intent?.status === "succeeded") {
-    const res=   await fetch("/api/update-order-status", {
+      const res = await fetch("/api/update-order-status", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -84,11 +84,8 @@ const CheckOutForm = () => {
           newStatus: "success",
         }),
       });
-     const data=res.json()
-   
-     
+      const data = res.json();
 
-      // router.refresh();
       cc();
 
       setIsSuccess(true);
