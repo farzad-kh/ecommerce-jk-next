@@ -2,7 +2,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import ProductCard from "../module/ProductCard";
 import { Product } from "../template/ProductCardContainer";
 interface Props {
@@ -15,6 +15,10 @@ const SliderBreakPoint = ({ productsData }: Props) => {
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
         }}
@@ -36,7 +40,7 @@ const SliderBreakPoint = ({ productsData }: Props) => {
             spaceBetween: 30,
           },
         }}
-        modules={[Pagination]}
+        modules={[Pagination,Autoplay]}
         className="mySwiper"
       >
         {productsData.map((item) => (
