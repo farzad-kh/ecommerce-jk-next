@@ -26,7 +26,7 @@ const Cart = ({ totalQuantity }: Props) => {
       transition: {
         duration: 0.4,
         type: "spring",
-        stiffness: 40,
+        stiffness: 50,
       },
     },
   };
@@ -67,11 +67,11 @@ const Cart = ({ totalQuantity }: Props) => {
             >
               <IoMdClose className="  text-xl  " />
             </span>
-            {totalQuantity! > 0 && (
+            {totalQuantity! > 0 ? 
               <div className="mb-5 fixed flex gap-x-1 mt-6 self-center w-full justify-center">
                 <p className="text-cyan-700">BASKET</p>[{totalQuantity} ITEMS]
               </div>
-            )}
+            :""}
           </div>
 
           <motion.div
@@ -104,11 +104,9 @@ const Cart = ({ totalQuantity }: Props) => {
                 </div>
               </div>
             ) : (
-              <motion.div
-                exit={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                initial={{ opacity: 0 }}
-                className="h-full items-center self-center justify-center flex gap-y-4 flex-col"
+              <div
+           
+                className="h-full items-center justify-center flex gap-y-4 flex-col"
               >
                 <motion.div
                   initial={{ opacity: 1, rotate: -25, y: -20 }}
@@ -133,7 +131,7 @@ const Cart = ({ totalQuantity }: Props) => {
                 >
                   Your basket is empty
                 </motion.p>
-              </motion.div>
+              </div>
             )}
           </motion.div>
         </motion.section>

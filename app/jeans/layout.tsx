@@ -6,9 +6,9 @@ interface LayoutProps  {
  
 const layout = ({children}:LayoutProps) => {
     const cat = [
-        { id: 1, value: "", label: "all" },
-        { id: 2, value: "slim fit", label: "slim fit" },
-        { id: 3, value: "baggy", label: "baggy" },
+        { id: 1, label: "All" },
+        { id: 2, value: "slim fit", label: "Slim fit" },
+        { id: 3, value: "baggy", label: "Baggy" },
       ];
     
     return (

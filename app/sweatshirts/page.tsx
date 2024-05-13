@@ -5,6 +5,7 @@ import Link from "next/link";
 import { sort } from "fast-sort";
 import SelectCat from "../components/module/SelectCat";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 interface Props {
   searchParams: {
@@ -28,7 +29,7 @@ const productMetadata=productsData.filter(item=>item.metadata.category==="sweats
     }
   };
 
-
+  if (data().length===0) notFound()
   return (
     <div>
 

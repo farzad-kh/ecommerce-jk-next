@@ -26,6 +26,7 @@ const page = async ({ searchParams }: Props) => {
       return productsData;
     }
   };
+console.log(data());
 
   return (
     <div>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { sort } from "fast-sort";
 import SelectCat from "../components/module/SelectCat";
 import { Metadata } from 'next'
+import { notFound } from "next/navigation";
 interface Props {
   searchParams: {
     category?: string | undefined;
@@ -33,7 +34,7 @@ const page = async ({ searchParams }: Props) => {
     }
   };
 
-
+  if (data().length===0) notFound()
   return (
     <div>
       <ProductCardContainer productsData={data()} />

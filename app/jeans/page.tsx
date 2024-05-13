@@ -1,10 +1,11 @@
 import Stripe from "stripe";
 import ProductCardContainer from "../components/template/ProductCardContainer";
 import getProducts from "../hooks/DataList";
-import Link from "next/link";
-import { sort } from "fast-sort";
-import SelectCat from "../components/module/SelectCat";
+ 
+
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 interface Props {
   searchParams: {
@@ -19,7 +20,7 @@ const productMetadata=productsData.filter(item=>item.metadata.category==="jeans"
  
 
   const data = () => {
-    const sortAcs = sort(productMetadata?.map((item) => item.unit_amount)).asc();
+  
     if (searchParams.category) {
       const filterType =
       productMetadata.filter((item) =>
@@ -30,11 +31,13 @@ const productMetadata=productsData.filter(item=>item.metadata.category==="jeans"
       return productMetadata;
     }
   };
-
+  // if (data().length===0) notFound()
   return (
     <div>
+<Suspense fallback={<div>looooooooood</div>}>
 
       <ProductCardContainer productsData={data()} />
+</Suspense>
     </div>
   );
 };

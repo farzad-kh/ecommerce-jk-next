@@ -30,15 +30,15 @@ const SizeSelect = ({ productSize, product }: Props) => {
           {sizes?.map((item, i) => (
             <label key={i}>
               <input
-                className="radio-input focus:outline-0"
+                className="radio-input focus:outline-0 "
                 type="radio"
                 value={item}
                 name={item}
                 checked={selectSize === item}
                 onChange={selectHandler}
               />
-              <span className="radio-tile">
-                <span className="radio-label uppercase">{item}</span>
+              <span className="radio-tile ">
+                <span className="radio-label uppercase ">{item}</span>
               </span>
             </label>
           ))}

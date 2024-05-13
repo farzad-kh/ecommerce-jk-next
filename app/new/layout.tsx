@@ -7,7 +7,7 @@ interface LayoutProps {
 
 const layout = ({ children }: LayoutProps) => {
   const cat = [
-    { id: 1, value: "", label: "Newest" },
+    { id: 1,  label: "Newest" },
     { id: 2, value: "asc", label: "Price low to high" },
     { id: 3, value: "desc", label: "Price high to low" },
   ];

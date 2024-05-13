@@ -1,3 +1,4 @@
+"use client"
 import AnimatePresenceLayout from "../layout/AnimatePresenceLayout";
 import MotionLayout from "../layout/MotionLayout";
 import ProductCard from "../module/ProductCard";
@@ -18,7 +19,7 @@ interface Props {
 }
  
 const ProductCardContainer = ({ productsData, favorite }: Props) => {
-   
+
 
   return (
     <div className="flex items-center justify-center">

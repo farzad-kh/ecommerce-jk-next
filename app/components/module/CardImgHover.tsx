@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
 const CardImgHover = ({ images, favorite }: {} | any | string | boolean) => {
-  const [isHovered, setHovered] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
   const [imgLoad, setImgLoad] = useState(false);
   const imageHover = {
     hidden: {
@@ -37,15 +37,16 @@ const CardImgHover = ({ images, favorite }: {} | any | string | boolean) => {
         <motion.div
           className="w-full h-full"
           onMouseEnter={() => {
-            setHovered(true);
+            setIsHovered(true);
           }}
-          onMouseLeave={() => setHovered(false)}
+          onMouseLeave={() => setIsHovered(false)}
         >
           <AnimatePresence>
             {isHovered && (
               <motion.img
                 variants={imageHover}
                 animate={isHovered ? imageHover.show : imageHover.hidden}
+                initial={imageHover.hidden}
                 exit={{ opacity: 0 }}
                 alt="Card example background"
                 className={` first:only:  z-0 w-full h-full  object-cover img aspect-[10.5/16] obg-p absolute ${
@@ -58,6 +59,7 @@ const CardImgHover = ({ images, favorite }: {} | any | string | boolean) => {
           <motion.img
             variants={imageHover}
             animate={isHovered ? imageHover.hidden : imageHover.show}
+            initial={imageHover.hidden}
             exit={{ opacity: 0 }}
             alt="Card example background"
             className={`    z-0 w-full h-full   object-cover img aspect-[10.5/16] obg-p absolute ${
@@ -77,7 +79,7 @@ export default CardImgHover;
 // import { Image } from "@nextui-org/react";
 // import { AnimatePresence, motion } from "framer-motion";
 // const CardImgHover = ({ images }: {} | any | string) => {
-//   const [isHovered, setHovered] = useState<boolean>(false);
+//   const [isHovered, setIsHovered] = useState<boolean>(false);
 
 //   return (
 

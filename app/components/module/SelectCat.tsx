@@ -69,7 +69,7 @@ import { useState } from "react";
 
 interface items {
   id?: number | undefined;
-  value: string | undefined;
+  value?: string | undefined;
   label: string | undefined;
 }
 interface Props {
@@ -82,15 +82,14 @@ const SelectCat = ({ selectCat, sorting, search }: Props) => {
   const params = useSearchParams();
   const urlParams = new URLSearchParams(params);
   const category = urlParams.get("category");
-  // const sortingParams = urlParams.get("sorting");
+
   const paramsQ = urlParams.toString().split("=");
   const pathname = usePathname();
 
-  const [selectVal, setSelectVal] = useState("");
   const selectHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = e.target;
-    setSelectVal(value);
-    console.log(e.target);
+
+   
 
     if (value !== "") {
       if (sorting) {
@@ -107,10 +106,11 @@ const SelectCat = ({ selectCat, sorting, search }: Props) => {
       router.push(`${pathname}`);
     }
   };
-  let defaultValueSearch = paramsQ.length < 3 ? "" : paramsQ[2].split("+").join(" ");
+  let defaultValueSearch =
+    paramsQ.length < 3 ? "" : paramsQ[2].split("+").join(" ");
 
   const selectParams = paramsQ[1]?.split("+").join(" ");
-  console.log(selectParams);
+ 
 
   return (
     <div className="sm:mx-10 mx-4 mt-10">
@@ -128,7 +128,7 @@ const SelectCat = ({ selectCat, sorting, search }: Props) => {
         className="max-w-xs select-t"
       >
         {selectCat.map((item) => (
-          <option key={item.id} value={item?.value}>
+          <option key={item.id} value={item?.value||""}>
             {item?.label}
           </option>
         ))}

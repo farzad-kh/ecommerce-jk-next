@@ -126,11 +126,11 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 
   font-size: 20px;
-  background: #358dda;
+  background: #1e293b;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top right, #26b978, #358dda);
+  /* background: -webkit-linear-gradient(to top right, #26b978, #358dda); */
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top right, #26b978, #358dda);
+  /* background: linear-gradient(to top right, #26b978, #358dda); */
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
@@ -404,6 +404,20 @@
 }
 
 
+.add-btn::after{
+  content: "";
+  width: 100%;
+  height: inherit;
+  position: absolute;
+  border: 1px solid #1e293b;
+  right: 0;
+  left: 4px;
+  top: 4px;
+  bottom: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius:0 0 2px 0 ;
+}
 
 
 
