@@ -167,7 +167,7 @@ const AddToCartBtn = ({
       
       className={` ${
         isCheckOutLoad && "!opacity-70"
-      }  sm:w-[280px] z transition-all w-full mr-2 group:  bg-gradient-to-tr h-[44px] text-base bg-slate-800 text-white shadow-lg overflow-auto z-auto  rounded-sm font-semibold relative add-btn`}
+      }  sm:w-[280px] z transition-all w-full mr-2 group:  bg-gradient-to-tr h-[44px] text-base bg-slate-800 text-white shadow-lg overflow-visible z-auto  rounded-sm font-semibold relative add-btn`}
     >
       {/* {!isLoading && (
       <motion.div

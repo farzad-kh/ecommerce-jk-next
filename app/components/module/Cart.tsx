@@ -110,7 +110,7 @@ const Cart = ({ totalQuantity }: Props) => {
               >
                 <motion.div
                   initial={{ opacity: 1, rotate: -25, y: -20 }}
-                  whileInView={{
+                  animate={{
                     opacity: 1,
                     rotate: 0,
                     y: 0,
@@ -121,7 +121,7 @@ const Cart = ({ totalQuantity }: Props) => {
                 </motion.div>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{
+                  animate={{
                     opacity: 1,
                     rotate: 0,
                     y: 0,

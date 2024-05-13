@@ -407,7 +407,7 @@
 .add-btn::after{
   content: "";
   width: 100%;
-  height: inherit;
+  height: 100%;
   position: absolute;
   border: 1px solid #1e293b;
   right: 0;
@@ -416,7 +416,7 @@
   bottom: 0;
   z-index: -1;
   pointer-events: none;
-  border-radius:0 0 2px 0 ;
+  border-radius: 0 0 2px 0;
 }
 
 
