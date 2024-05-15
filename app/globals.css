@@ -7,6 +7,8 @@
   grid-template-columns: repeat(12, 1fr);
 }
 
+ 
+
 .img {
   image-rendering: -moz-crisp-edges;
   image-rendering: -o-crisp-edges;
@@ -53,12 +55,7 @@
   }
 }
 
-/* .hh .swiper{
-  height: 100%
-}
-.swiper-vertical > .swiper-wrapper{
-  gap: 20px;
-}  */
+ 
 .swiper-slide-thumb-active img {
   border: 1.5px solid #319db7bd;
   transition: all 250ms linear;

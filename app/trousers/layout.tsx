@@ -7,7 +7,7 @@ import SelectCat from '../components/module/SelectCat';
 const layout = ({children}:LayoutProps) => {
     const cat = [
         { id: 1, label: "All" },
-        { id: 2, value: "argo trousers", label: "Cargo trousers" },
+        { id: 2, value: "cargo trousers", label: "Cargo trousers" },
         { id: 3, value: "sweatpants", label: "Sweatpants" },
       ];
     return (

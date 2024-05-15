@@ -11,7 +11,7 @@ const Layout = async ({ children }: Props) => {
     <>
       <Hidrated>
         <Header />
-        <main className="min-h-[100vh] ">{children}</main>
+        <main className="min-h-[100vh] max-w-[1920px] m-auto ">{children}</main>
         <Toaster />
         <Footer />
       </Hidrated>

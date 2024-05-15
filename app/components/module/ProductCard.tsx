@@ -6,7 +6,8 @@ import { Product } from "../template/ProductCardContainer";
 import CardImgHover from "./CardImgHover";
 import FavoriteBtn from "./FavoriteBtn";
 import { motion } from "framer-motion";
-
+import { usePathname } from "next/navigation";
+ 
 interface Props {
   products: Product;
   favorite?: boolean;
@@ -21,9 +22,13 @@ const ProductCard = ({
         item?.includes("image")
       )
     : [];
+
+    const pathname = usePathname();
+ 
+    
   return (
     <motion.div
-      layout
+       layout={pathname==="/wishlist"}
       exit={{ opacity: 0 }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

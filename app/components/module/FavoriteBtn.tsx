@@ -4,8 +4,9 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import LikeIcon from "../shared/LikeIcon";
-import { usePathname } from "next/navigation";
+
 import { motion } from "framer-motion";
+import { AiOutlineUser } from "react-icons/ai";
 interface Props {
   productId?: string | undefined;
   name?: string | undefined;
@@ -31,7 +32,7 @@ const FavoriteBtn = ({
   const [favoriteList, setFavoriteList] = useState<Props[]>([]);
   const [isLoad, setIsLoad] = useState(true);
 
-  const pathname = usePathname();
+  const icon = <AiOutlineUser style={{ fill: "white", fontSize: "18px" }} />;
 
   const fetchData = async () => {
     try {
@@ -40,7 +41,7 @@ const FavoriteBtn = ({
       setFavoriteList(newData);
 
       if (res.status === 200) {
-          setIsLoad(false) 
+        setIsLoad(false);
       }
     } catch (error) {
       console.error("Error in fetchData:", error);
@@ -49,13 +50,14 @@ const FavoriteBtn = ({
 
   const favoriteHandler = async () => {
     if (!session) {
-      toast("You must login", {
+      toast("Please login to your account", {
         style: {
           border: "2px solid #fff",
           color: "#fff",
           background: "#e46a6a",
           boxShadow: "0 0 20px #ddd",
         },
+        icon,
       });
       return;
     }
@@ -72,7 +74,7 @@ const FavoriteBtn = ({
           unit_amount,
         }),
       });
-      const data = await res.json();
+
       if (res.status === 200) {
         fetchData();
       }
@@ -94,12 +96,10 @@ const FavoriteBtn = ({
           productId,
         }),
       });
-      const data = await res.json();
+
       if (res.status === 201) {
         fetchData();
-        // if (pathname==="/wishlist") {
-        //   router.refresh()
-        // }
+
         router.refresh();
       }
     } catch (error) {
@@ -117,7 +117,7 @@ const FavoriteBtn = ({
     }
   }, [session]);
 
-  let isLiked: Props | undefined | Props[];
+  let isLiked: Props | undefined;
 
   isLiked =
     favoriteList && favoriteList?.find((item) => item?.productId === productId);

@@ -65,7 +65,7 @@ const ThumbsGallery = ({ setThumbsSwiper, images }: Props) => {
               <img
               alt={img}
                 onLoad={() => setImgLoader(false)}
-                className={`max-h-[150px] aspect-[10/13.3] w-full rounded-lg cursor-pointer ${
+                className={`max-h-[150px] aspect-[10/13.3] w-full rounded-lg cursor-pointer text-transparent ${
                   imgLoader ? "bg-loader " : ""
                 }`}
                 src={`${img}=webp&width=220&quality=80&key=21-0-3`}

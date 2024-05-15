@@ -7,7 +7,7 @@ import LogoPa from "../../../public/pants-us-dayz22-focus-row6-box1-en-us.jpg";
 import { motion } from "framer-motion";
 import { sideBanerMotion } from "@/util/PriceUsFormat";
 import { useRouter } from "next/navigation";
-import VideoPlayer from "./VideoPlayer";
+ 
 
 const banerImg = [
   { id: 1, image: LogoSw.src, url: "/jeans" },
@@ -17,15 +17,15 @@ const banerImg = [
 ];
 
 const SectionImgMain = () => {
-  const [a, setA] = useState(true);
-  setTimeout(() => setA(false), 500);
+  const [imageInView, setImageInView] = useState(true);
+  setTimeout(() => setImageInView(false), 500);
   const route = useRouter();
 
 
   return (
-    <div className={`${a ? "hidden" : "block"}`}>
+    <div className={`${imageInView ? "hidden" : "block"}`}>
  
-<VideoPlayer/>
+ 
       <div className="grid sm:grid-cols-2 grid-cols-1 grid-rows-2 sm:gap-4 gap-2">
         {banerImg.map((item, i) => (
           <motion.div
