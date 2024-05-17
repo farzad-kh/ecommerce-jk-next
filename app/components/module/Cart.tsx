@@ -1,5 +1,9 @@
 "use client";
-import { AnimatePresence, domAnimation, LazyMotion, motion } from "framer-motion";
+import {
+  AnimatePresence,
+ 
+  motion,
+} from "framer-motion";
 import { useCartStore, useDrawCart } from "@/app/store";
 import { IoMdClose } from "react-icons/io";
 import CartProduct from "../template/CartProduct";
@@ -16,7 +20,7 @@ const Cart = ({ totalQuantity }: Props) => {
       x: "100%",
 
       transition: {
-        duration: 0.35,
+        duration: 0.37,
       },
     },
 
@@ -25,8 +29,7 @@ const Cart = ({ totalQuantity }: Props) => {
 
       transition: {
         duration: 0.4,
-        type: "spring",
-        stiffness: 50,
+        ease: "linear",
       },
     },
   };
@@ -50,7 +53,7 @@ const Cart = ({ totalQuantity }: Props) => {
   }, [isOpen]);
   return (
     <>
-      <LazyMotion features={domAnimation}>
+ 
         <motion.div
           exit={drawer.hidden}
           animate={isOpen ? drawer.show : drawer.hidden}
@@ -144,7 +147,7 @@ const Cart = ({ totalQuantity }: Props) => {
           initial={{ opacity: 0 }}
           className="fixed h-[100svh] overflow-y-hidden w-full  right-0 overflow-hidden left-0 top-0 bg-[rgba(0,0,0,.2)] backdrop-blur-[0.7px] z-40"
         ></motion.div>
-      </LazyMotion>
+     
     </>
   );
 };

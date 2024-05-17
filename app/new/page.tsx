@@ -1,9 +1,9 @@
-import Stripe from "stripe";
+
 import ProductCardContainer from "../components/template/ProductCardContainer";
 import getProducts from "../hooks/DataList";
-import Link from "next/link";
+
 import { sort } from "fast-sort";
-import SelectCat from "../components/module/SelectCat";
+
 import { Metadata } from "next";
 
 interface Props {
@@ -14,7 +14,7 @@ interface Props {
 const page = async ({ searchParams }: Props) => {
   const productsData = await getProducts();
 
-  // const filterCategory=productMetadata.filter(item=>item.category==="sweatshirt")
+ 
 
   const data = () => {
     if (searchParams.sorting) {
@@ -26,11 +26,10 @@ const page = async ({ searchParams }: Props) => {
       return productsData;
     }
   };
-console.log(data());
+
 
   return (
     <div>
-
       <ProductCardContainer productsData={data()} />
     </div>
   );

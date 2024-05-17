@@ -128,16 +128,16 @@ const AddToCartBtn = ({
       size="md"
       className={` ${
         isCheckOutLoad && "!opacity-70"
-      }  sm:w-[280px] z transition-all w-full mr-2 group  bg-gradient-to-tr h-[44px] text-base bg-slate-800 text-white shadow-lg overflow-visible  rounded-sm font-semibold relative add-btn`}
+      }  sm:w-[280px] z hover-active-text  transition-all w-full mr-2 group  bg-gradient-to-tr h-[44px] text-base bg-slate-800 text-white shadow-lg overflow-visible  rounded-sm font-semibold relative add-btn`}
     >
       {isLoading ? (
         <Spinner color="white" size="md" />
       ) : (
-        <div className="transition-all flex justify-center w-fit items-center text-center group pointer-events-none">
-          <div className="relative -translate-y-8 group-hover:translate-y-0 transition-all group-hover:mr-[4px] mr-[-4px] ">
+        <div className="transition-all  flex justify-center w-fit items-center text-center  pointer-events-none">
+          <i className="relative translate-y-0 mr-1 transition-all    ">
             <AiOutlineShopping className={`w-[26px]  h-7 z-10 text-white   `} />
-          </div>
-          <p className="mr-[18px] group-hover:mr-[4px] transition-all">
+          </i>
+          <p className="mr-[18px]   transition-all ">
             {" "}
             Add to cart
           </p>

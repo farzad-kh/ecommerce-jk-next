@@ -1,5 +1,10 @@
 "use client";
-import { useCartStore, useCheckOut, useClientSecret, useDrawCart } from "@/app/store";
+import {
+  useCartStore,
+  useCheckOut,
+  useClientSecret,
+  useDrawCart,
+} from "@/app/store";
 import { usePathname } from "next/navigation";
 import { formatPrice } from "@/util/PriceUsFormat";
 import { Button, Skeleton, Spinner } from "@nextui-org/react";
@@ -56,14 +61,14 @@ const CheckOutCart = () => {
       });
       return;
     }
-  
+
     router.push("/checkout");
     isCloseHandler();
     setTimeout(() => checkOutLoadHandler(), 2000);
     // false the load
   };
   const pathname = usePathname();
-
+  const skeletonLoad = [0, 1, 2];
   return (
     <motion.div layout className="flex flex-col gap-y-1 pt-5   h-48 z-[99] ">
       {!isLoading ? (
@@ -118,15 +123,11 @@ const CheckOutCart = () => {
       ) : (
         <>
           <div className="flex flex-col gap-4">
-            <Skeleton className="w-full rounded">
-              <div className="h-4 w-full rounded bg-default-200"></div>
-            </Skeleton>
-            <Skeleton className="w-full rounded">
-              <div className="h-4 w-full rounded bg-default-200"></div>
-            </Skeleton>
-            <Skeleton className="w-full rounded">
-              <div className="h-4 w-full rounded bg-default-200"></div>
-            </Skeleton>
+            {skeletonLoad.map((item) => (
+              <Skeleton key={item} className="w-full rounded">
+                <div className="h-4 w-full rounded bg-default-200"></div>
+              </Skeleton>
+            ))}
           </div>
           <Button
             className="bg-gradient-to-tr mt-3 w-full from-green-500 to-blue-500 text-white shadow-lg  rounded font-semibold uppercase"
