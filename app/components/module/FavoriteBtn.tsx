@@ -110,6 +110,7 @@ const FavoriteBtn = ({
   };
 
   useEffect(() => {
+    setIsLoad(false);
     if (session) {
       fetchData();
     } else {

@@ -1,12 +1,7 @@
-import Stripe from "stripe";
+
 import ProductCardContainer from "../components/template/ProductCardContainer";
 import getProducts from "../hooks/DataList";
- 
-
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { Suspense } from "react";
-
 interface Props {
   searchParams: {
     category?: string | undefined;
@@ -14,16 +9,15 @@ interface Props {
 }
 const page = async ({ searchParams }: Props) => {
   const productsData = await getProducts();
-const productMetadata=productsData.filter(item=>item.metadata.category==="jeans")
-// const filterCategory=productMetadata.filter(item=>item.category==="sweatshirt")
- 
- 
+  const productMetadata = productsData.filter(
+    (item) => item.metadata.category === "jeans"
+  );
+  // const filterCategory=productMetadata.filter(item=>item.category==="sweatshirt")
 
   const data = () => {
-  
     if (searchParams.category) {
       const filterType =
-      productMetadata.filter((item) =>
+        productMetadata.filter((item) =>
           item.features.includes(`Product type : ${searchParams?.category}`)
         ) || [];
       return filterType;
@@ -34,10 +28,7 @@ const productMetadata=productsData.filter(item=>item.metadata.category==="jeans"
   // if (data().length===0) notFound()
   return (
     <div>
-<Suspense fallback={<div>looooooooood</div>}>
-
       <ProductCardContainer productsData={data()} />
-</Suspense>
     </div>
   );
 };
@@ -45,7 +36,6 @@ const productMetadata=productsData.filter(item=>item.metadata.category==="jeans"
 export default page;
 
 export const metadata: Metadata = {
-  title:'Jeans For Men | JACK & JONES',
-  description:'High Quality Jeans'
-}
- 
+  title: "Jeans For Men | JACK & JONES",
+  description: "High Quality Jeans",
+};
