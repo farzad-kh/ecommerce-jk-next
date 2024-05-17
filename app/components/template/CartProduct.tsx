@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
 import { CartItem, useCartStore, useCheckOut } from "@/app/store";
-import { Button, Image} from "@nextui-org/react";
+import { Button, Image } from "@nextui-org/react";
 import { formatPrice } from "@/util/PriceUsFormat";
-import {motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 
 import { usePathname } from "next/navigation";
 
 import { FaRegTrashAlt } from "react-icons/fa";
+import RemoveProduct from "../module/RemoveProduct";
+import CalculatProductBtn from "../module/CalculatProductBtn";
 const CartProduct = ({
   id,
   name,
@@ -23,7 +25,7 @@ const CartProduct = ({
   const removeProduct = useCartStore((state) => state.removeProduct);
   const decreaseProduct = useCartStore((state) => state.decreaseProduct);
   const isCheckOutLoad = useCheckOut((state) => state.isCheckOutLoad);
-  const [isRemoved, setIsremoved] = useState(false);
+  const [isRemoved, setIsremoved] = useState<boolean>(false);
   const pathname = usePathname();
 
   const decreaseHandler = () => {
@@ -82,7 +84,7 @@ const CartProduct = ({
       exit={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
-      className="flex flex-col gap-3 mb-4 origin-bottom h-[90px] relative     "
+      className="flex flex-col gap-3 mb-4 origin-bottom h-[90px] relative "
     >
       <div className="flex gap-3   h-[90px] text-sm text-xs-custom relative rounded overflow-hidden ">
         <div className="rounded overflow-hidden flex-shrink-0 ">
@@ -112,34 +114,14 @@ const CartProduct = ({
                 {quantity}
               </p>
               {pathname !== "/checkout" && (
-                <div
-                  className={`
-                  ${isLoading || isCheckOutLoad ? "opacity-50" : ""}
-                    flex gap-x-1`}
-                >
-                  <button
-                    disabled={isCheckOutLoad || isLoading}
-                    onClick={decreaseHandler}
-                  >
-                    <AiFillMinusCircle className="text-base" />
-                  </button>
-                  <button
-                    disabled={isCheckOutLoad || isLoading}
-                    onClick={addToCartHandler}
-                  >
-                    <AiFillPlusCircle className="text-base" />
-                  </button>
-
-                  <button
-                    disabled={isCheckOutLoad || isLoading}
-                    className={`${
-                      isRemoved ? "bg-white" : ""
-                    } absolute sm:right-[50px] right-[25px] self-center`}
-                    onClick={() => setIsremoved(true)}
-                  >
-                    <FaRegTrashAlt className="text-red-500" />
-                  </button>
-                </div>
+                <CalculatProductBtn
+                  isLoading={isLoading}
+                  isCheckOutLoad={isCheckOutLoad}
+                  decreaseHandler={decreaseHandler}
+                  addToCartHandler={addToCartHandler}
+                  isRemoved={isRemoved}
+                  setIsremoved={setIsremoved}
+                />
               )}
             </div>
           </div>
@@ -165,31 +147,7 @@ const CartProduct = ({
       
           absolute w-full scale-0 left-0 z-50  bg-[rgba(0,0,0,0.3)] backdrop-blur-[2px] overflow-hidden  rounded h-full origin-center `}
         >
-          <div className="flex justify-center items-center gap-y-1  w-full self-center h-full flex-col">
-            <p className="max-sm:text-base text-sm font-semibold text-white">
-              Are you sure you want to remove this item?
-            </p>
-            <div className="flex gap-x-4">
-              <Button
-                size="sm"
-                className="border-1 border-gray-300 rounded-sm h-[36px] font-semibold"
-                radius="none"
-                onClick={() => setIsremoved(false)}
-              >
-                NO
-              </Button>
-              <Button
-                size="sm"
-                className=" rounded-sm border-1 border-red-600 h-[36px] font-semibold"
-                radius="none"
-                color="danger"
-                variant="solid"
-                onClick={remove}
-              >
-                YES
-              </Button>
-            </div>
-          </div>
+          <RemoveProduct remove={remove} setIsremoved={setIsremoved} />
         </motion.div>
       )}
     </motion.div>
