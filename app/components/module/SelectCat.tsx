@@ -62,6 +62,80 @@
 
 // export default SelectCat;
 
+// "use client";
+// import { useRouter, useSearchParams, usePathname } from "next/navigation";
+// import { motion } from "framer-motion";
+// import { useState } from "react";
+
+// interface items {
+//   id?: number | undefined;
+//   value?: string | undefined;
+//   label: string | undefined;
+// }
+// interface Props {
+//   selectCat: items[];
+//   sorting?: boolean;
+//   search?: string;
+// }
+// const SelectCat = ({ selectCat, sorting, search }: Props) => {
+//   const router = useRouter();
+//   const params = useSearchParams();
+//   const urlParams = new URLSearchParams(params);
+//   const category = urlParams.get("category");
+
+//   const paramsQ = urlParams.toString().split("=");
+//   const pathname = usePathname();
+
+//   const selectHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+//     const { value } = e.target;
+
+//     if (value !== "") {
+//       if (sorting) {
+//         router.push(`${pathname}?sorting=${value}`);
+//         if (search && sorting) {
+//           router.push(`${pathname}?q=${search}&sorting=${value}`);
+//         }
+//       } else {
+//         router.push(`${pathname}?category=${value}`);
+//       }
+//     } else if (value === "" && search) {
+//       router.push(`${pathname}?q=${search}`);
+//     } else {
+//       router.push(`${pathname}`);
+//     }
+//   };
+//   let defaultValueSearch =
+//     paramsQ.length < 3 ? "" : paramsQ[2].split("+").join(" ");
+
+//   const selectParams = paramsQ[1]?.split("+").join(" ");
+
+//   return (
+//     <div className="sm:mx-10 mx-4 mt-10">
+//       <motion.select
+//         initial={{ opacity: 0 }}
+//         whileInView={{ opacity: 1 }}
+//         onChange={selectHandler}
+//         value={
+//           search
+//             ? defaultValueSearch
+//             : selectParams === undefined
+//             ? ""
+//             : selectParams
+//         }
+//         className="max-w-xs select-t"
+//       >
+//         {selectCat.map((item) => (
+//           <option key={item.id} value={item?.value||""}>
+//             {item?.label}
+//           </option>
+//         ))}
+//       </motion.select>
+//     </div>
+//   );
+// };
+
+// export default SelectCat;
+
 "use client";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { motion } from "framer-motion";
@@ -75,42 +149,33 @@ interface items {
 interface Props {
   selectCat: items[];
   sorting?: boolean;
-  search?: string;
 }
-const SelectCat = ({ selectCat, sorting, search }: Props) => {
+const SelectCat = ({ selectCat, sorting }: Props) => {
   const router = useRouter();
-  const params = useSearchParams();
-  const urlParams = new URLSearchParams(params);
-  const category = urlParams.get("category");
-
-  const paramsQ = urlParams.toString().split("=");
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams);
   const pathname = usePathname();
+
+  const searchQ = params.get("q");
+  const sortParams = params.get("sorting");
+  const categoryParams = params.get("category");
+
+  const updateQuery = (value: string) => {
+    const isCategory = value && !searchQ && pathname !== "/new";
+    isCategory ? params.set("category", value) : params.delete("category");
+    sorting && value ? params.set("sorting", value) : params.delete("sorting");
+    if (searchQ) params.set("q", searchQ);
+    const query = params.size > 0 ? "?" + params.toString() : "";
+
+    return query;
+  };
 
   const selectHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = e.target;
-
-   
-
-    if (value !== "") {
-      if (sorting) {
-        router.push(`${pathname}?sorting=${value}`);
-        if (search && sorting) {
-          router.push(`${pathname}?q=${search}&sorting=${value}`);
-        }
-      } else {
-        router.push(`${pathname}?category=${value}`);
-      }
-    } else if (value === "" && search) {
-      router.push(`${pathname}?q=${search}`);
-    } else {
-      router.push(`${pathname}`);
-    }
+    router.push(pathname + updateQuery(value));
   };
-  let defaultValueSearch =
-    paramsQ.length < 3 ? "" : paramsQ[2].split("+").join(" ");
 
-  const selectParams = paramsQ[1]?.split("+").join(" ");
- 
+  const defultVal = searchQ || sortParams ? sortParams : categoryParams;
 
   return (
     <div className="sm:mx-10 mx-4 mt-10">
@@ -118,17 +183,11 @@ const SelectCat = ({ selectCat, sorting, search }: Props) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         onChange={selectHandler}
-        value={
-          search
-            ? defaultValueSearch
-            : selectParams === undefined
-            ? ""
-            : selectParams
-        }
+        value={defultVal || ""}
         className="max-w-xs select-t"
       >
         {selectCat.map((item) => (
-          <option key={item.id} value={item?.value||""}>
+          <option key={item.id} value={item?.value || ""}>
             {item?.label}
           </option>
         ))}

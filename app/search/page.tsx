@@ -20,7 +20,7 @@ const page = async ({ searchParams }: Props) => {
   const productsData = await getProducts();
 
   const data = () => {
-    let filteredItems;
+    let filteredItems=productsData
 
     if (searchParams.q) {
       filteredItems = productsData.filter(
@@ -37,8 +37,7 @@ const page = async ({ searchParams }: Props) => {
         const sortedDesc = sort(filteredItems).desc((p) => p.unit_amount);
         const sortedAsc = sort(filteredItems).asc((p) => p.unit_amount);
 
-        return (filteredItems =
-          searchParams.sorting === "asc" ? sortedAsc : sortedDesc);
+        filteredItems = searchParams.sorting === "asc" ? sortedAsc : sortedDesc;
       }
       return filteredItems;
     } else {
@@ -55,7 +54,7 @@ const page = async ({ searchParams }: Props) => {
     <>
       {data()?.length! > 0 ? (
         <SearchLoad>
-          <SelectCat selectCat={cat} sorting search={searchParams.q} />
+          <SelectCat selectCat={cat} sorting />
 
           <ProductCardContainer productsData={data()!} />
         </SearchLoad>

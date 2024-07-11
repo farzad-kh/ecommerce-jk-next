@@ -1,9 +1,6 @@
-import Stripe from "stripe";
+
 import ProductCardContainer from "../components/template/ProductCardContainer";
 import getProducts from "../hooks/DataList";
-import Link from "next/link";
-import { sort } from "fast-sort";
-import SelectCat from "../components/module/SelectCat";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
