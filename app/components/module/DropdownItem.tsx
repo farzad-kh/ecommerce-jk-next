@@ -44,7 +44,7 @@ const DropdownItemUser = ({ profileUser }: Props) => {
   ];
 
   const dropDownLinkHandler = (item: DropdownItem) => {
-    if (item.title === "Wishlist" || item.title === "Orders") {
+    if (item.title === "Wishlists" || item.title === "Orders") {
       router.push(item.href!);
       router.refresh();
     } else if (item.href === "") {
