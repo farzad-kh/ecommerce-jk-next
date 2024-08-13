@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
 import { CartItem, useCartStore, useCheckOut } from "@/app/store";
-import { Button, Image } from "@nextui-org/react";
+import { Image } from "@nextui-org/react";
 import { formatPrice } from "@/util/PriceUsFormat";
 import { motion } from "framer-motion";
-import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
+ 
 
 import { usePathname } from "next/navigation";
 
-import { FaRegTrashAlt } from "react-icons/fa";
+ 
 import RemoveProduct from "../module/RemoveProduct";
 import CalculatProductBtn from "../module/CalculatProductBtn";
 const CartProduct = ({

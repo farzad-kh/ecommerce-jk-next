@@ -178,7 +178,7 @@ const SelectCat = ({ selectCat, sorting }: Props) => {
   const defultVal = searchQ || sortParams ? sortParams : categoryParams;
 
   return (
-    <div className="sm:mx-10 mx-4 mt-10">
+    <div className="md:mx-10 mx-4 mt-10  max-md:mb-4">
       <motion.select
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

@@ -5,7 +5,7 @@ interface Props {
   setIsremoved: Dispatch<SetStateAction<boolean>>;
 }
 const RemoveProduct = ({ remove, setIsremoved }: Props) => {
-    console.log(remove,setIsremoved);
+   
     
   return (
     <div className="flex justify-center items-center gap-y-1  w-full self-center h-full flex-col">

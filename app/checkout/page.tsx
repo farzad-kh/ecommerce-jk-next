@@ -3,13 +3,10 @@ import CheckOutContainer from "../components/template/CheckOutContainer";
 // import { getServerSession } from "next-auth";
 // import { authOptions } from "../api/auth/[...nextauth]/route";
 import React from "react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
-
-const CheckOut = async () => {
-  // const session = await getServerSession(authOptions)
-  const session = await getServerSession(authOptions);
-
+ 
+const CheckOut = () => {
+   
+ 
   // const userProducts = await prisma.user.findUnique({
   //   where: { id: session.user.id },
   //   include: {

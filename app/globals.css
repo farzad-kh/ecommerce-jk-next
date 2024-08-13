@@ -6,7 +6,15 @@
 .dd {
   grid-template-columns: repeat(12, 1fr);
 }
+:root {
+  --nextui-font-size-tiny: 0.9rem; /* تغییر مقدار موجود */
+  --nextui-line-height-tiny: 1.5; /* تغییر مقدار موجود */
+}
 
+.text-large {
+  font-size: var(--nextui-font-size-tiny);
+  line-height: var(--nextui-line-height-tiny);
+}
 
 
 .img {
@@ -147,7 +155,13 @@
 }
 
 
-
+.text-ellipsis-custom{
+  width : 260px;
+  overflow:hidden;
+  display:inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 .radio-input:checked+.radio-tile .radio-label {
   color: #fff;
@@ -222,24 +236,7 @@
   }
 }
 
-/* .bg-loader:after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transform: translateX(-100%);
-  background-image: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0,
-    rgba(255, 255, 255, 0.2) 20%,
-    rgba(255, 255, 255, 0.5) 60%,
-    rgba(208, 207, 207, 0)
-  );
-  animation: shimmer 2.5s infinite;
-  content: '';
-} */
-
+ 
 @keyframes shimmer {
   100% {
     transform: translateX(100%);
@@ -249,14 +246,7 @@
 
 
 
-
-
-
-
-
-
-
-
+ 
 
 /* loading */
 .loaderRow {
@@ -286,18 +276,7 @@
   }
 }
 
-
-
-
-
-
-/* miniloderLike
- */
-/* .loader-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
+ 
 .loaderLike {
   width: 22px;
   height: 22px;
@@ -318,9 +297,9 @@
 
 
 
-@media screen and (max-width:767.5px) {
+@media screen and (max-width:1024px) {
   .jack-logo {
-    width: 120px;
+    width: 136px;
   }
 }
 

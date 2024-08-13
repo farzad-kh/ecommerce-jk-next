@@ -12,6 +12,7 @@ export interface Product {
   metadata?: { color?: string; size?: string; composition?: string,category:string}|any;
   description?: string | null;
   features?: (string | null | any)[];
+  category?:string
 }
 interface Props {
   productsData: Product[];
@@ -19,7 +20,7 @@ interface Props {
 }
  
 const ProductCardContainer = ({ productsData, favorite }: Props) => {
-
+ 
 
   return (
     <div className="flex items-center justify-center">

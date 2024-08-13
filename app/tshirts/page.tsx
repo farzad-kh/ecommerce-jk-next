@@ -14,7 +14,7 @@ interface Props {
 const page = async ({ searchParams }: Props) => {
   const productsData = await getProducts();
   const productMetadata = productsData.filter(
-    (item) => item.metadata.category === "tshirt"
+    (item) => item.metadata.category === "tshirts"
   );
   // const filterCategory=productMetadata.filter(item=>item.category==="sweatshirt")
  

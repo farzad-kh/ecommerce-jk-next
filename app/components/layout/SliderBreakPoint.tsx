@@ -44,8 +44,8 @@ const SliderBreakPoint = ({ productsData }: Props) => {
         className="mySwiper"
       >
         {productsData.map((item) => (
-          <SwiperSlide>
-            <ProductCard key={item.id} products={item} />
+          <SwiperSlide key={item.id}>
+            <ProductCard  products={item} />
           </SwiperSlide>
         ))}
       </Swiper>

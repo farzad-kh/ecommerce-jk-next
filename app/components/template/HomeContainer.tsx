@@ -1,10 +1,11 @@
 import { Image } from "@nextui-org/react";
 import React from "react";
 import LogoMain from "../../../public/newin-us.jpg";
-import SectionImgMain from "../module/SectionImgMain";
 import getProducts from "@/app/hooks/DataList";
-import SliderBreakPoint from "../layout/SliderBreakPoint";
 import Link from "next/link";
+import dynamic from 'next/dynamic';
+const SliderBreakPoint = dynamic(() => import('../layout/SliderBreakPoint'));
+const SectionImgMain  = dynamic(() => import('../module/SectionImgMain'));
 
 const HomeContainer = async () => {
   const productsData = await getProducts();

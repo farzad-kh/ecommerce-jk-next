@@ -37,7 +37,7 @@ const page = async ({ searchParams }: Props) => {
 
 if (data().length===0) notFound()
    
-console.log(data());
+ 
 
  
 

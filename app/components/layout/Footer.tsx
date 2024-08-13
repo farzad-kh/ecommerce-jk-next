@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <div className=" w-full flex  justify-around   items-center text-white sm:flex-nowrap flex-wrap mt-24   ff p-4">
-      <article className="flex flex-col w-full  p-5 max-sm:after:border-b-1   self-baseline ">
+      <article className="flex flex-col w-full max-sm:py-5 max-sm:px-0 p-5 max-sm:after:border-b-1   self-baseline ">
         <p className="font-bold text-base mb-3">JACK & JONES</p>
         <ul>
           <li className="text-sm my-2">About JACK & JONES</li>
@@ -10,7 +10,7 @@ const Footer = () => {
           <li className="text-sm my-2">Certificates </li>
         </ul>
       </article>
-      <article className="flex flex-col w-full  p-5 max-sm:after:border-b-1   self-baseline ">
+      <article className="flex flex-col w-full max-sm:py-5 max-sm:px-0 p-5 max-sm:after:border-b-1   self-baseline ">
         <p className="font-bold text-base mb-3">Help</p>
         <ul>
           <li className="text-sm my-2">Where is my order? </li>
@@ -21,7 +21,7 @@ const Footer = () => {
           <li className="text-sm my-2">Privacy policy</li>
         </ul>
       </article>
-      <article className="flex flex-col w-full  p-5     self-baseline">
+      <article className="flex flex-col w-full max-sm:py-5 max-sm:px-0 p-5  self-baseline">
         <p className="font-bold text-base mb-3">About Bestseller</p>
         <ul>
           <li className="text-sm my-2">About Bestseller</li>

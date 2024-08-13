@@ -1,3 +1,4 @@
+import React, { cache } from "react";
 import SliderContainer from "@/app/components/layout/SliderContainer";
 import AccorDionItem from "@/app/components/module/AccorDionItem";
 import AddToCartBtn from "@/app/components/module/AddToCartBtn";
@@ -11,6 +12,8 @@ import { PrismaClient } from "@prisma/client";
 import { useSession } from "next-auth/react";
 
 import Stripe from "stripe";
+import ProductHeader from "@/app/components/module/ProductHeader";
+
 interface Props {
   searchParams: Product;
   params: { productId: string };
@@ -19,48 +22,52 @@ interface Props {
 const page = async ({ searchParams, params }: Props) => {
   const { productId } = params;
 
-  const getProduct = async () => {
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-      apiVersion: "2023-10-16",
-    });
-    const products = await stripe.products.retrieve(productId);
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
+    apiVersion: "2023-10-16",
+  });
 
-    const price = await stripe.prices.retrieve(products?.default_price as any);
+  // for cacheing data
+  const getProduct = cache(async (productId: string) => {
+    const product = await stripe.products.retrieve(productId);
+    const price = await stripe.prices.retrieve(product.default_price as string);
 
-    const featuresName = products.features.map((item) => item.name);
+    const featuresName = product.features?.map((item) => item?.name);
 
-    const productItem = {
-      name: products.name,
-      id: products.id,
+    return {
+      name: product.name,
+      id: product.id,
       unit_amount: price.unit_amount,
-      image: products.images[0],
-      description: products.description,
-      metadata: products?.metadata,
+      image: product.images[0],
+      description: product.description,
+      metadata: product.metadata,
       currency: price.currency,
       features: featuresName,
+      category: product.metadata.category,
     };
+  });
 
-    // return productItem;
-    return productItem;
-  };
+  // get product
+  const product = await getProduct(productId);
 
-  const product = await getProduct();
-
-  return <ProductInfo product={product} />;
+  return (
+    <>
+      <ProductInfo product={product} />
+    </>
+  );
 };
 
 export default page;
 
-// category: 'technology',
+// Metadata
 export async function generateMetadata({ params }: Props) {
   const { productId } = params;
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
     apiVersion: "2023-10-16",
   });
-  const products = await stripe.products.retrieve(productId);
+  const product = await stripe.products.retrieve(productId);
   return {
-    title: `${products.name} | JACK & JONES`,
-    description: products?.description,
-    category: products.metadata.category,
+    title: `${product.name} | JACK & JONES`,
+    description: product.description,
+    category: product.metadata.category,
   };
 }

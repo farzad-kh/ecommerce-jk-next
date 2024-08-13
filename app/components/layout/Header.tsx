@@ -7,60 +7,36 @@ import {
   NavbarItem,
   Spinner,
   NavbarMenuToggle,
-  NavbarMenu,
-  NavbarMenuItem,
 } from "@nextui-org/react";
-import { signIn, useSession } from "next-auth/react";
-import DropdownItemUser from "../module/DropdownItem";
-import Cart from "../module/Cart";
-import { AiOutlineUser } from "react-icons/ai";
-import { useCartStore, useDrawCart } from "@/app/store";
-import { AnimatePresence } from "framer-motion";
-import { motion } from "framer-motion";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "../../../public/Jack-Jones.png";
 import Image from "next/image";
-import { AiOutlineShopping } from "react-icons/ai";
-import { CiSearch } from "react-icons/ci";
-import SearchContainer from "../module/SearchContainer";
+import AuthStatus from "../module/AuthStatus";
+import HeaderCart from "../module/HeaderCart";
+import ResponsiveNav from "../module/ResponsiveNav";
+import NavbarSearch from "../module/NavbarSearch";
 const Header = () => {
-  const { data: session, status } = useSession();
-  const isToggleHandler = useDrawCart((state) => state.isToggleHandler);
-  const isOpen = useDrawCart((state) => state.isOpen);
-  const cartStore = useCartStore((state) => state.cart);
-
-  const totalQuantity = cartStore.reduce((acc, cur) => acc + cur.quantity, 0);
   const pathname = usePathname();
   const navLinks: { id: number; href: string; title: string }[] = [
     { id: 1, href: "/sweatshirts", title: "Sweatshirts" },
     { id: 2, href: "/jeans", title: "Jeans" },
-    { id: 3, href: "/tshirt", title: "T-shirts" },
+    { id: 3, href: "/tshirts", title: "T-shirts" },
     { id: 4, href: "/trousers", title: "Trousers" },
     { id: 5, href: "/new", title: "New" },
   ];
   const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
   const [activeSearch, setActiveSearch] = useState(false);
-  let ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    let handler = (e: MouseEvent) => {
-      if (!ref.current || !ref.current.contains(e.target as Node)) {
-        setActiveSearch(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handler);
-  }, []);
 
   return (
     <Navbar
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="#f3f4f5"
+      className="#f3f4f5 mb-6"
       maxWidth="full"
     >
-      <div className="flex items-center w-full max-w-[1920px] m-auto">
+      <div className="flex items-center w-full max-w-[1920px] ">
         <NavbarBrand className="mr-5">
           <NavbarContent>
             <NavbarMenuToggle
@@ -68,19 +44,17 @@ const Header = () => {
               className="md:hidden h-[26px] px-2"
             />
             <Link href={"/"} className="font-bold text-inherit w-full ">
-              {
-                <Image
-                  className="jack-logo"
-                  width={180}
-                  height={150}
-                  alt="jc"
-                  src={Logo}
-                />
-              }
+              <Image
+                className="jack-logo"
+                width={180}
+                height={150}
+                alt="jc"
+                src={Logo}
+              />
             </Link>
           </NavbarContent>
         </NavbarBrand>
-        <NavbarContent className="hidden md:flex gap-3" justify="center">
+        <NavbarContent className="hidden md:flex gap-3 " justify="center">
           {navLinks.map((item) => (
             <NavbarItem key={item.id}>
               <Link
@@ -94,84 +68,27 @@ const Header = () => {
             </NavbarItem>
           ))}
         </NavbarContent>
-        <NavbarContent className="gap-[0.7rem]" as="div" justify="end">
-          <div className="relative block max-md:hidden " ref={ref}>
-            <div
-              onClick={() => setActiveSearch(!activeSearch)}
-              className="w-[26px] h-[26px] cursor-pointer"
-            >
-              <CiSearch className="w-[26px] h-[26px]   text-3xl" />
-            </div>
-            <AnimatePresence>
-              {activeSearch && (
-                <SearchContainer setActiveSearch={setActiveSearch} />
-              )}
-            </AnimatePresence>
-          </div>
 
-          <div className="mt-2">
-            <button className="relative" onClick={isToggleHandler}>
-              <AiOutlineShopping
-                className={"w-[26px] h-7 z-10 text-slate-700 "}
-              />
-
-              <AnimatePresence>
-                {totalQuantity ? (
-                  <motion.div
-                    exit={{ scale: 0 }}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="absolute bottom-[15px] left-[15px] w-[22px] h-[22px]   text-sm rounded-full   bg-gradient-to-tr from-green-500 to-blue-500 text-white "
-                  >
-                    <span className="mt-[1px]"> {totalQuantity}</span>
-                  </motion.div>
-                ) : (
-                  ""
-                )}
-              </AnimatePresence>
-            </button>
-            <AnimatePresence>
-              {isOpen && <Cart totalQuantity={totalQuantity} />}
-            </AnimatePresence>
-          </div>
-          {(status as string) === "loading" ? (
-            <Spinner size="md" />
-          ) : (status as string) === "authenticated" ? (
-            <NavbarItem className="w-[32px] ml-2  ">
-              <DropdownItemUser profileUser={session?.user} />
-            </NavbarItem>
-          ) : (
-            <NavbarItem>
-              <div
-                className="text-[26px] cursor-pointer"
-                onClick={() => signIn("google")}
-              >
-                <AiOutlineUser />
-              </div>
-            </NavbarItem>
-          )}
-        </NavbarContent>
-
-        <NavbarMenu>
-          <SearchContainer
+        <NavbarContent
+          className={`gap-[0.7rem] transition-all  lg:ml-0 md:ml-10 ml-0 `}
+          as="div"
+          justify="end"
+        >
+          <NavbarSearch
             setActiveSearch={setActiveSearch}
-            setIsMenuOpen={setIsMenuOpen}
+            activeSearch={activeSearch}
           />
 
-          {navLinks.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className={` hover:text-blue-600 ${
-                  pathname === item.href && "text-blue-600 font-semibold"
-                }`}
-                href={item.href}
-              >
-                {item.title}
-              </Link>
-            </NavbarMenuItem>
-          ))}
-        </NavbarMenu>
+          <HeaderCart />
+          <AuthStatus />
+        </NavbarContent>
+
+        <ResponsiveNav
+          setActiveSearch={setActiveSearch}
+          setIsMenuOpen={setIsMenuOpen}
+          isMenuOpen={isMenuOpen}
+          navLinks={navLinks}
+        />
       </div>
     </Navbar>
   );

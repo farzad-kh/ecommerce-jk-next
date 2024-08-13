@@ -15,7 +15,7 @@ const SliderContainer = ({ metadata }: Props) => {
   ).filter((item) => item?.includes("image"));
 
   return (
-    <div className=" md:sticky  relative md:overflow-y-hidden overflow-auto top-[55px]   md:flex-[0.45] flex-[0.8]  flex-wrap justify-center md:self-baseline self-center grid   gap-x-4  max-md:p-7 max-sm:p-4  gap-y-3   ">
+    <div className=" md:sticky  relative md:overflow-y-hidden overflow-auto md:top-[55px] top-[0]   md:flex-[0.45] flex-[0.8]  flex-wrap justify-center md:self-baseline self-center grid   gap-x-4  max-md:p-7 max-sm:p-4  gap-y-3   ">
       <div className=" rounded-md block overflow-hidden max-h-[700px] w-full">
         {metadata && (
           <SliderThumbs

@@ -1,13 +1,13 @@
 import React from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
-import { redirect } from "next/navigation";
 import Image from "next/image";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 const page = async () => {
   const session = await getServerSession(authOptions);
   if (!session) redirect("/api/auth/signin");
-  console.log(session);
+ 
 
   return (
     <div className="flex justify-center items-center h-[50vh] p-5 sm:text-xl text-base flex-col gap-y-1 font-semibold text ">

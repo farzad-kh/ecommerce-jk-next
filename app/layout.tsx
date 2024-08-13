@@ -1,10 +1,10 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter} from "next/font/google";
+import { Inter } from "next/font/google";
 import NextAuthProvider from "./provider/NextAuthProvider";
 import { ProvidersUI } from "./provider/NextUIProvider";
 import Layout from "./components/layout/layout";
- 
+import WrappedQueryProvider from "./WrappedQueryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,11 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NextAuthProvider>
-          <ProvidersUI>
-            <Layout>{children}</Layout>
-          </ProvidersUI>
-        </NextAuthProvider>
+        <WrappedQueryProvider>
+          <NextAuthProvider>
+            <ProvidersUI>
+              <Layout>{children}</Layout>
+            </ProvidersUI>
+          </NextAuthProvider>
+        </WrappedQueryProvider>
       </body>
     </html>
   );

@@ -19,7 +19,7 @@ const AccorDionItem = ({ features, metadata }: Props) => {
           variant="light"
         >
           <AccordionItem
-            className="font-semibold py-0 ts-text-base"
+            className="font-semibold py-0 "
             key="1"
             aria-label="Features & Specs"
             title="FEATURES & SPECS"
@@ -35,7 +35,7 @@ const AccorDionItem = ({ features, metadata }: Props) => {
           </AccordionItem>
 
           <AccordionItem
-            className="font-semibold py-0 ts-text-base  "
+            className="font-semibold py-0"
             key="2"
             aria-label="Fabric Composition"
             title="FABRIC COMPOSITION"
@@ -51,7 +51,7 @@ const AccorDionItem = ({ features, metadata }: Props) => {
           </AccordionItem>
 
           <AccordionItem
-            className="font-semibold py-0 ts-text-base  "
+            className="font-semibold py-0"
             key="3"
             aria-label="DELIVERY & RETURNS"
             title="DELIVERY & RETURNS"
