@@ -3,6 +3,15 @@
 @tailwind utilities;
 
 
+@layer components{
+.footer-article{
+  @apply flex flex-col w-full max-sm:py-5 max-sm:px-0 p-5 max-sm:after:border-b-1 max-sm:after:mt-3 max-sm:after:w-full sm:items-center self-baseline
+}
+.footer-article-border-none{
+@apply  flex flex-col w-full max-sm:py-5 max-sm:px-0 p-5  max-sm:after:w-full sm:items-center self-baseline
+}
+}
+
 .dd {
   grid-template-columns: repeat(12, 1fr);
 }
@@ -10,7 +19,9 @@
   --nextui-font-size-tiny: 0.9rem; /* تغییر مقدار موجود */
   --nextui-line-height-tiny: 1.5; /* تغییر مقدار موجود */
 }
-
+header{
+  justify-content: center !important
+}
 .text-large {
   font-size: var(--nextui-font-size-tiny);
   line-height: var(--nextui-line-height-tiny);

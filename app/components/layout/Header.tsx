@@ -30,7 +30,7 @@ const Header = () => {
   const [activeSearch, setActiveSearch] = useState(false);
 
   return (
-    <Navbar
+    <Navbar id="header"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       className="#f3f4f5 mb-6"

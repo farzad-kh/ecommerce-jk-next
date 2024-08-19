@@ -1,32 +1,32 @@
 const Footer = () => {
   return (
     <div className=" w-full flex  justify-around   items-center text-white sm:flex-nowrap flex-wrap mt-24   ff p-4">
-      <article className="flex flex-col w-full max-sm:py-5 max-sm:px-0 p-5 max-sm:after:border-b-1   self-baseline ">
-        <p className="font-bold text-base mb-3">JACK & JONES</p>
+      <article className="footer-article">
         <ul>
-          <li className="text-sm my-2">About JACK & JONES</li>
-          <li className="text-sm my-2">Jobs & Careers</li>
-          <li className="text-sm my-2">Sustainability</li>
-          <li className="text-sm my-2">Certificates </li>
+          <li className="font-bold text-base mb-3">JACK & JONES</li>
+          <li className="text-sm my-2 text-slate-200">About JACK & JONES</li>
+          <li className="text-sm my-2 text-slate-200">Jobs & Careers</li>
+          <li className="text-sm my-2 text-slate-200">Sustainability</li>
+          <li className="text-sm my-2 text-slate-200">Certificates </li>
         </ul>
       </article>
-      <article className="flex flex-col w-full max-sm:py-5 max-sm:px-0 p-5 max-sm:after:border-b-1   self-baseline ">
-        <p className="font-bold text-base mb-3">Help</p>
+      <article className="footer-article">
         <ul>
-          <li className="text-sm my-2">Where is my order? </li>
-          <li className="text-sm my-2">What delivery options do you offer? </li>
-          <li className="text-sm my-2">Return here</li>
-          <li className="text-sm my-2">How do I get in touch?</li>
-          <li className="text-sm my-2">Terms and conditions</li>
-          <li className="text-sm my-2">Privacy policy</li>
+          <li className="font-bold text-base mb-3">Help</li>
+          <li className="text-sm my-2 text-slate-200">Where is my order? </li>
+          <li className="text-sm my-2 text-slate-200">What delivery options do you offer? </li>
+          <li className="text-sm my-2 text-slate-200">Return here</li>
+          <li className="text-sm my-2 text-slate-200">How do I get in touch?</li>
+          <li className="text-sm my-2 text-slate-200">Terms and conditions</li>
+          <li className="text-sm my-2 text-slate-200">Privacy policy</li>
         </ul>
       </article>
-      <article className="flex flex-col w-full max-sm:py-5 max-sm:px-0 p-5  self-baseline">
-        <p className="font-bold text-base mb-3">About Bestseller</p>
+      <article className="footer-article-border-none">
         <ul>
-          <li className="text-sm my-2">About Bestseller</li>
-          <li className="text-sm my-2">Jobs</li>
-          <li className="text-sm my-2">Corporate news</li>
+          <li className="font-bold text-base mb-3">About Bestseller</li>
+          <li className="text-sm my-2 text-slate-200">About Bestseller</li>
+          <li className="text-sm my-2 text-slate-200">Jobs</li>
+          <li className="text-sm my-2 text-slate-200">Corporate news</li>
         </ul>
       </article>
     </div>
